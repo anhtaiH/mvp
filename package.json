@@ -1,0 +1,28 @@
+{
+  "name": "mvp-voting-app",
+  "version": "1.0.0",
+  "description": "Angular project to create a Porfolio Allocator for investors to easily rebalance their porfolio",
+  "main": "main",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anhtaih/2016-04-mvp"
+  },
+  "keywords": [
+    "mvp",
+    "hack",
+    "reactor",
+    "portfolio",
+    "allocator"
+  ],
+  "author": "Tai Huynh",
+  "license": "unlicensed",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.17",
+    "request": "^2.72.0"
+  }
+}
