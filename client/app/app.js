@@ -1,15 +1,14 @@
 var app = angular.module('portfolio-app', [
   'funds-controller',
-  'funds-factory',
   'save-controller',
-  'save-factory',
-  'ui-router'
+  'ui.router'
 ]);
 
 app.config(function($stateProvider, $httpProvider) {
+  console.log('This is the state provider ===>', $stateProvider);
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '',
       views: {
         'save': {
           templateUrl: 'app/components/save/save.html',

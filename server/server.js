@@ -10,6 +10,8 @@ mongoose.connect('mongodb://localhost/portfolio-allocator');
 app.use(express.static(__dirname + './../client'));
 app.use(bodyParser.json());
 
+require('./routes.js')(app, express);
+
 app.listen(3000);
 
 module.exports = app;
