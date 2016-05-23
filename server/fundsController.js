@@ -5,7 +5,6 @@ var addFund = function(userFundInfo) {
   var newFund = new FundsModel({
     name: userFundInfo.name,
     current$: userFundInfo.current$,
-    cash: userFundInfo.cash
   });
 
   newFund.save(function(err, result) {

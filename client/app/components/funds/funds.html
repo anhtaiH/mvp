@@ -1,1 +1,38 @@
-<h1>Funds page</h1>
+
+<div class='col-md-1'></div>
+<div class="col-md-2">
+<h3>Name:</h3>
+<br>
+<h3>Current Value:</h3>
+<br>
+<h3>Current %:</h3>
+<br>
+<h3>Target Value:</h3>
+<br>
+<h3>Target %:</h3>
+<br>
+<h3>Funds to Transfer:</h3>
+<br>
+<h3>Direction:</h3>
+
+</div>
+
+<div class='row'>
+  <div ng-repeat="fund in funds">
+    <div class="col-md-2">
+      <h3>{{fund.name}}</h3>
+      <br>
+      <h3>{{fund.current$}}</h3>
+      <br>
+      <h3>{{fund.currentPercentage}}</h3>
+      <br>
+      <h3>{{desiredPercentage === NaN ? '' : (desiredPercentage / 100 * totalCash)}}</h3>
+      <br><br>
+      <input type='number' min='0' max='100' required name='desired-percentage' ng-model='desiredPercentage'>
+      <br>
+      <h3>{{desiredPercentage === NaN ? '' : current$ - desiredPercentage}}</h3>
+      <br>
+      <h3>{{fund.direction}}</h3>
+    </div>
+  </div>
+</div>
