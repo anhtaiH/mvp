@@ -29,10 +29,10 @@
       <h3>{{desiredPercentage === NaN ? '' : (desiredPercentage / 100 * totalCash)}}</h3>
       <br><br>
       <input type='number' min='0' max='100' required name='desired-percentage' ng-model='desiredPercentage'>
-      <br>
-      <h3>{{desiredPercentage === NaN ? '' : current$ - desiredPercentage}}</h3>
-      <br>
-      <h3>{{fund.direction}}</h3>
+      <br><br>
+      <h3>{{(desiredPercentage / 100 * totalCash) - fund.current$}}</h3>
+      <br><br>
+      <h3>{{((desiredPercentage / 100 * totalCash) - fund.current$) > 0 ? 'Buy' : 'Sell'}}</h3>
     </div>
   </div>
 </div>

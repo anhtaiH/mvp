@@ -19,12 +19,7 @@ function FundsController($scope, $http) {
 
     $scope.funds.forEach(function(fund) {
       fund.currentPercentage = Math.round(fund.current$ / $scope.totalCash * 100).toFixed(2);
-
     });
-
     console.log('Successful GET request! Scope Funds is now ====>', $scope.funds);
-
-
   });
-
 }
