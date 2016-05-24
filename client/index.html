@@ -13,20 +13,24 @@
   <!-- Start Body -->
   <body>
   <div class="jumbotron">
+  <navigation></navigation>
     <h1 class="text-primary text-center">Portfolio Allocator</h1>
   </div>
 
   <div class='container' ui-view='save'></div>
   <div class='container' ui-view='funds'></div>
+        <div ui-view='register'></div>
+
 
   <script src="./bower_components/angular/angular.js"></script>
   <script src="./bower_components/angular-route/angular-route.js"></script>
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
   <script src="/app/components/save/save.controller.js"></script>
-  <script src="/app/components/save/save.factory.js"></script>
-  <script src="/app/components/funds/funds.factory.js"></script>
   <script src="/app/components/funds/funds.controller.js"></script>
+  <script src="/app/components/login/login.controller.js"></script>
+  <script src="/app/components/register/register.controller.js"></script>
+  <script src="/app/components/navbar/navbar.controller.js"></script>
 
   <script src="app/app.js"></script>
   </body>

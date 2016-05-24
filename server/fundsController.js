@@ -1,6 +1,6 @@
 var FundsModel = require('./fundsModel');
 
-var addFund = function(userFundInfo, res) {
+var addFund = function(userFundInfo) {
 
   var newFund = new FundsModel({
     name: userFundInfo.name,
@@ -29,17 +29,17 @@ var fetchFunds = function(callback) {
 };
 
 var deleteFunds = function() {
-  FundsModel.find({}, function(err, result) {
+  FundsModel.remove({}, function(err, result) {
     if (err) {
       console.log('Error deleting the funds from database (fundscontroller route) ===>', err);
     } else {
       console.log('Data successfully deleted from database (routes) ===>', result);
     }
-  }).remove({});
+  });
 }
 
 module.exports = {
   addFund: addFund,
-  fetchFunds: fetchFunds
-  // deleteFunds: deleteFunds
+  fetchFunds: fetchFunds,
+  deleteFunds: deleteFunds
 };

@@ -3,6 +3,7 @@ var funds = angular.module('funds-controller', []);
 funds.controller('FundsController', FundsController);
 
 function FundsController($scope, $http) {
+
   $scope.funds = null;
 
   $scope.totalCash = 0;

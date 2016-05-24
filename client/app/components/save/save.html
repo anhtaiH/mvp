@@ -7,36 +7,40 @@
       <div class="col-sm-4">
         <h4 class='text-center'>Fund 1</h4>
         <input type="text" class="form-control" id="fundName1" placeholder="Enter name of first fund" ng-model='fundName1' required>
-        <input type="text" class="form-control" id="currentValue1" placeholder="Enter current value" ng-model='fundVal1' required>
-        <input type="text" class="form-control" id="desiredPercent1" placeholder="Enter desired percentage e.g '54' for 54%" ng-model='fundDesired1' required>
+        <input type="number" class="form-control" id="currentValue1" placeholder="Enter current value" ng-model='fundVal1' required>
+        <input type="number" class="form-control" id="desiredPercent1" placeholder="Enter desired percentage e.g '54' for 54%" max='100' ng-model='fundDesired1' required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-4">
         <h4 class='text-center'>Fund 2</h4>
         <input type="text" class="form-control" id="fundName2" placeholder="Enter name of second fund" ng-model='fundName2' required>
-        <input type="text" class="form-control" id="currentValue2" placeholder="Enter current value" ng-model='fundVal2' required>
-        <input type="text" class="form-control" id="desiredPercent2" placeholder="Enter desired percentage e.g '54' for 54%" ng-model='fundDesired2' required>
+        <input type="number" class="form-control" id="currentValue2" placeholder="Enter current value" ng-model='fundVal2' required>
+        <input type="number" class="form-control" id="desiredPercent2" placeholder="Enter desired percentage e.g '54' for 54%" max='100' ng-model='fundDesired2' required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-4">
         <h4 class='text-center'>Fund 3</h4>
         <input type="text" class="form-control" id="fundName3" placeholder="Enter name of third fund" ng-model='fundName3' required>
-        <input type="text" class="form-control" id="currentValue3" placeholder="Enter current value" ng-model='fundVal3' required>
-        <input type="text" class="form-control" id="desiredPercent3" placeholder="Enter desired percentage e.g '54' for 54%" ng-model='fundDesired3' required>
+        <input type="number" class="form-control" id="currentValue3" placeholder="Enter current value" ng-model='fundVal3' required>
+        <input type="number" class="form-control" id="desiredPercent3" placeholder="Enter desired percentage e.g '54' for 54%" max='100' ng-model='fundDesired3' required>
       </div>
     </div>
     <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4">
       <h4 class='text-center'>Cash</h4>
-      <input type="text" class="form-control " width='50' id="cash" placeholder="Enter amount of new money" ng-model='cash'>
+      <input type="text" class="form-control " width='50' id="cash" placeholder="Enter amount of new money (leave blank for 0)" ng-model='cash'>
       <div class='text-center span7'>
-        <input type="submit" class="btn btn-lg btn-primary" value='Save'>
+        <input type="submit" class="buttons btn btn-lg btn-primary" value='Save'>
+        <input type='button' class="buttons btn btn-lg btn-danger" value='Reset' ng-click='clearFunds()'>
       </div>
     </div>
   </form>
 </div>
 
+<div ng-show='funds'>
+  <div class='container' ui-view='funds'></div>
+ </div>
 <!--
   <form class='form-inline' ng-submit='saveFunds(fundNameInput, current$Input)'>
     First Name: <input class='form-control' type= 'text' ng-model='fundNameInput'>

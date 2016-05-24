@@ -1,10 +1,14 @@
 var app = angular.module('portfolio-app', [
   'funds-controller',
-  'save-controller',
-  'ui.router'
+  'save-controller',,
+  'login-controller',
+  'register-controller',
+  'navbar-controller',
+  'ui.router',
+  'ngRoute'
 ]);
 
-app.config(function($stateProvider, $httpProvider) {
+app.config(function($stateProvider, $routeProvider, $httpProvider, $urlRouterProvider) {
   console.log('This is the state provider ===>', $stateProvider);
   $stateProvider
     .state('home', {
@@ -19,5 +23,32 @@ app.config(function($stateProvider, $httpProvider) {
           controller: 'FundsController'
         }
       }
-    });
+    })
+
+    .state('register', {
+      url: '/register',
+      views: {
+        register: {
+          templateUrl: 'app/components/register/register.html',
+          controller: 'RegisterController'
+        },
+      }
+    })
+
+    .state('login', {
+      url: '/login',
+      views: {
+        register: {
+          templateUrl: 'app/components/login/login.html',
+          controller: 'LoginController'
+        },
+      }
+    })
+});
+
+app.directive('navigation', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'app/components/navbar/navbar.html'
+  };
 });

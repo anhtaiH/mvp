@@ -11,7 +11,6 @@ function SaveController($scope, $http) {
     if (name === 'Cash') {
       dp = 0
     }
-    console.log('cash ===>', currentValue)
 
     if (name === 'Cash' && !currentValue) {
       currentValue = 0;
@@ -34,16 +33,17 @@ function SaveController($scope, $http) {
       return res;
     });
   };
-}
 
-// function clearInputFields($scope) {
-//   $scope.fundName1 = '';
-//   $scope.fundVal1 = '';
-//   $scope.fundDesired1 = '';
-//   $scope.fundName2 = '';
-//   $scope.fundVal2 = '';
-//   $scope.fundDesired2 = '';
-//   $scope.fundName3 = '';
-//   $scope.fundVal3 = '';
-//   $scope.fundDesired3= '';
-// }
+  $scope.clearFunds = function() {
+
+    $http({
+      method: 'DELETE',
+      url: '/restart'
+    })
+    .then(function(res) {
+      console.log('Response was successfully deleted ===>', res);
+      return res;
+    })
+
+  }
+}
