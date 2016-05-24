@@ -13,8 +13,7 @@ var populateSavedAllocation = function(req, res) {
 
 var saveAllocation = function (req, res) {
   console.log('Incoming post data.... saving allocation to data base', JSON.stringify(req.body));
-  fundsController.addFund(req.body);
-  res.send('Funds have been added');
+  fundsController.addFund(req.body, res);
 };
 
 module.exports = {

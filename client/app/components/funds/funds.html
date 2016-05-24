@@ -1,38 +1,46 @@
 
-<div class='col-md-1'></div>
-<div class="col-md-2">
-<h3>Name:</h3>
-<br>
-<h3>Current Value:</h3>
-<br>
-<h3>Current %:</h3>
-<br>
-<h3>Target Value:</h3>
-<br>
-<h3>Target %:</h3>
-<br>
-<h3>Funds to Transfer:</h3>
-<br>
-<h3>Direction:</h3>
+<div ng-show='funds.length > 0'>
+  <div class='col-md-1'></div>
 
-</div>
+  <div class="col-md-2">
+    <h4 class='text-center alert alert-info'>Name:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Current $:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Current %:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Target $:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Target %:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Transfer $:</h4>
+    <br>
+    <h4 class='text-center alert alert-info'>Direction:</h4>
+  </div>
 
-<div class='row'>
-  <div ng-repeat="fund in funds">
-    <div class="col-md-2">
-      <h3>{{fund.name}}</h3>
-      <br>
-      <h3>{{fund.current$}}</h3>
-      <br>
-      <h3>{{fund.currentPercentage}}</h3>
-      <br>
-      <h3>{{desiredPercentage === NaN ? '' : (desiredPercentage / 100 * totalCash)}}</h3>
-      <br><br>
-      <input type='number' min='0' max='100' required name='desired-percentage' ng-model='desiredPercentage'>
-      <br><br>
-      <h3>{{(desiredPercentage / 100 * totalCash) - fund.current$}}</h3>
-      <br><br>
-      <h3>{{((desiredPercentage / 100 * totalCash) - fund.current$) > 0 ? 'Buy' : 'Sell'}}</h3>
+  <div class='row'>
+    <div class='col-md-offset-1'>
+      <div ng-repeat="fund in funds">
+        <div class="col-md-2">
+          <h4 class='text-center alert alert-info'>{{fund.name}}</h4>
+          <br>
+          <h4 class='alert alert-warning text-center'>${{fund.current$}}</h4>
+          <br>
+          <h4 class='alert alert-warning text-center'>{{fund.currentPercentage}}%</h4>
+          <br>
+          <h4 class='alert alert-warning text-center'>{{fund.desiredValue}}</h4>
+          <br>
+          <h4 class='alert alert-warning text-center'>{{fund.desired}}%</h4>
+          <br>
+          <h4 ng-class="fund.ftt[1] === '0' ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{fund.ftt}}</h4>
+          <br>
+          <h4 ng-class="fund.ftt[1] === '0' ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{fund.direction}}</h4>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class='container' ng-hide="funds.length > 0">
+  <h1 class='text-primary text-center'>Please Fill In All of The Boxes</h1>
 </div>

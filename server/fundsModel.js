@@ -6,7 +6,7 @@ var FundsSchema = new mongoose.Schema({
     unique: true
   },
   current$: Number,
-  cash: Number
+  desired: Number
 });
 
 FundsSchema.pre('save', function(next) {
