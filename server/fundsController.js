@@ -1,11 +1,11 @@
 var FundsModel = require('./fundsModel');
 
-var addFund = function(userFundInfo) {
+var addFund = function(fund) {
 
   var newFund = new FundsModel({
-    name: userFundInfo.name,
-    current$: userFundInfo.current$,
-    desired: userFundInfo.desired
+    name: fund.name,
+    current$: fund.current$,
+    desired: fund.desired
   });
 
   newFund.save(function(err, result) {

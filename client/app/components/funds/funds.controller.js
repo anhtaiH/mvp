@@ -2,7 +2,21 @@ var funds = angular.module('funds-controller', []);
 
 funds.controller('FundsController', FundsController);
 
-function FundsController($scope, $http) {
+function FundsController($scope, $http, $state) {
+
+  var updateFunds = function(fund) {
+    var desiredValue = (fund.desired / 100 * $scope.totalCash).toFixed(2);
+    fund.desiredValue = '$' + String((fund.desired / 100 * $scope.totalCash).toFixed(2));
+    fund.currentPercentage = (fund.current$ / $scope.totalCash * 100).toFixed(2);
+
+    var ftt = (desiredValue - fund.current$).toFixed(2)
+
+    fund.ftt = ftt > 0 ? '+$' + ftt :
+      ftt < 0 ? '-$' + Math.abs(ftt) : '$' + 0;
+
+    fund.direction = ftt > 0 ? 'BUY' :
+      ftt < 0 ? 'SELL' : 'N/A';
+  };
 
   $scope.funds = null;
 
@@ -13,23 +27,36 @@ function FundsController($scope, $http) {
     url: '/funds'
   })
   .then(function(res) {
-    $scope.funds = res.data.slice(0, 4);
-    console.log('Successful GET request! Scope Funds is now ====>', $scope.funds);
-
+    $scope.funds = res.data;
     $scope.totalCash = $scope.funds.reduce(function(totalCash, fund) {
       return fund.current$ + totalCash;
     }, 0);
 
-    $scope.funds.forEach(function(fund) {
-      fund.currentPercentage = (fund.current$ / $scope.totalCash * 100).toFixed(2);
-      fund.desiredValue = (fund.desired / 100 * $scope.totalCash).toFixed(2);
-      var ftt = (fund.desiredValue - fund.current$).toFixed(2)
+    $scope.funds.forEach(updateFunds);
 
-      fund.ftt = ftt > 0 ? '+$' + ftt :
-        ftt < 0 ? '-$' + Math.abs(ftt) : '$' + 0;
+    $scope.updateTarget();
 
-      fund.direction = ftt > 0 ? 'BUY' :
-        ftt < 0 ? 'SELL' : 'N/A';
-    });
   });
+
+  $scope.invalidPercentage = false;
+
+  $scope.updateTarget = function() {
+    var totalPercentage = $scope.funds.reduce(function(prev, curr) {
+      return prev + +curr.desired;
+    }, 0);
+
+    console.log('Total percentage', totalPercentage, $scope.funds);
+
+    if (totalPercentage !== 100) {
+      $scope.invalidPercentage = true;
+    } else if (totalPercentage === 100) {
+
+      $scope.funds.forEach(updateFunds);
+
+      $scope.invalidPercentage = false;
+    }
+
+  }
+
+
 }

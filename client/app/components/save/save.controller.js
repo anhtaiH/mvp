@@ -2,15 +2,12 @@ var save = angular.module('save-controller', []);
 
 save.controller('SaveController', SaveController);
 
-function SaveController($scope, $http) {
+function SaveController($scope, $http, $state) {
   $scope.fundNameInput = '';
   $scope.current$Input = '';
 
   $scope.saveFunds = function(name, currentValue, dp) {
-
-    if (name === 'Cash') {
-      dp = 0
-    }
+    dp = 0
 
     if (name === 'Cash' && !currentValue) {
       currentValue = 0;
@@ -29,7 +26,9 @@ function SaveController($scope, $http) {
       data: JSON.stringify(newFunds)
     })
     .then(function(res) {
-      console.log('Response from post request....', res);
+      if (res.data === 'Funds have been added') {
+        $state.reload();
+      }
       return res;
     });
   };
@@ -41,7 +40,9 @@ function SaveController($scope, $http) {
       url: '/restart'
     })
     .then(function(res) {
-      console.log('Response was successfully deleted ===>', res);
+      if (res.data === 'Funds have been cleared') {
+        $state.reload();
+      }
       return res;
     })
 

@@ -14,3 +14,22 @@
   margin-top: 10px;
   width: 100px;
 }
+
+.fundinput {
+  display:block;
+  margin: 0 auto;
+  width: 600px;
+}
+
+.target-input {
+  margin-top: 10.5px;
+  display: block !important;
+  font-size: 21px !important;
+  font-weight: bold;
+  color: gray;
+}
+
+.incorrect {
+  font-size: 20px;
+  font-style: italic;
+}

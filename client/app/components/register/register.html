@@ -7,21 +7,21 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <p class="lead">Already a member? Please <a href="/#login?page=">log in</a> instead.</p>
-      <form ng-submit>
+      <form ng-submit="registerUser(email, name, password)">
         <div role="alert" ng-show="vm.formError" class="alert alert-danger">Expression</div>
         <div class="form-group">
           <label for="name">Full name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" ng-model='name'>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model='email'>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" ng-model>
+          <input type="password" class="form-control" id="password" placeholder="Password" ng-model='password'>
         </div>
-        <button type="submit" class="btn btn-default">Register!</button>
+        <button type="submit" class="btn btn-info">Register!</button>
       </form>
     </div>
   </div>
