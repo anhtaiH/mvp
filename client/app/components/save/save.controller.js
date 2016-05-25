@@ -7,7 +7,7 @@ function SaveController($scope, $http, $state) {
   $scope.current$Input = '';
 
   $scope.saveFunds = function(name, currentValue, dp) {
-    dp = 0
+    dp = dp || 0;
 
     if (name === 'Cash' && !currentValue) {
       currentValue = 0;
