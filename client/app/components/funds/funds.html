@@ -1,7 +1,7 @@
 
 <div ng-show='funds.length > 0'>
   <div class='row'>
-    <div class="col-md-4">
+    <div class="col-md-offset-1 col-md-2">
       <h4 class='text-center alert alert-info'>Name:</h4>
     </div>
     <div class="col-md-1">
@@ -22,11 +22,12 @@
     <div class="col-md-2">
       <h4 class='text-center alert alert-info'>Action:</h4>
     </div>
+    <div class="col-md-offset-1"></div>
   </div>
 
   <div class='row'>
     <div ng-repeat="fund in funds">
-      <div class="col-md-4">
+      <div class="col-md-offset-1 col-md-2">
         <h4 class='text-center alert alert-info'>{{fund.name}}</h4>
       </div>
       <div class="col-md-1">
@@ -39,20 +40,21 @@
         <input type='number' required min='0' max='100' ng-model='fund.desired' class='alert alert-warning text-center target-input input-lg form-control'>
       </div>
       <div class="col-md-1">
-        <h4 class='alert alert-success text-center'>{{!invalidPercentage ? fund.desiredValue : 'Enter valid %'}}</h4>
+        <h4 class='alert alert-success text-center'>{{!invalidPercentage ? fund.desiredValue : '...'}}</h4>
       </div>
       <div class="col-md-2">
-        <h4 ng-class="fund.ftt[1] === '0' || invalidPercentage ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{!invalidPercentage ? fund.ftt : 'Enter valid %'}}</h4>
+        <h4 ng-class="fund.ftt[1] === '0' || invalidPercentage ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{!invalidPercentage ? fund.ftt : '...'}}</h4>
       </div>
       <div class="col-md-2">
-        <h4 ng-class="fund.ftt[1] === '0' || invalidPercentage ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{!invalidPercentage ? fund.direction : 'Enter valid %'}}</h4>
+        <h4 ng-class="fund.ftt[1] === '0' || invalidPercentage ? 'NA' : fund.ftt[0] === '-'  ? 'sell' : 'buy'" class='alert alert-success text-center'>{{!invalidPercentage ? fund.direction : '...'}}</h4>
       </div>
     </div>
+    <div class="col-md-offset-1"></div>
   </div>
 </div>
 
 <div class='row'>
-  <div class='col-md-offset-6 col-md-1'>
+  <div class='col-md-offset-5 col-md-1'>
     <button type='submit' class="btn btn-lg btn-warning" ng-click='updateTarget()'>Update Risk</button>
   </div>
   <div class='col-md=2'>
